@@ -32,59 +32,59 @@ const AnalyticsPage: React.FC<AnalyticsPageProps> = ({ analyticsData }) => {
     : '0';
 
   return (
-    <div className="space-y-6 page-transition">
+    <div className="space-y-12 page-transition">
       {/* 关键指标卡片 */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="industrial-card p-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="p-2 bg-red-900 rounded-lg">
-              <AlertTriangle className="w-5 h-5 text-red-500" />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="industrial-card p-8">
+          <div className="flex items-center justify-between mb-3">
+            <div className="p-3 bg-red-900 rounded-lg">
+              <AlertTriangle className="w-6 h-6 text-red-500" />
             </div>
-            <span className="text-xs text-gray-400">本月</span>
+            <span className="text-sm text-gray-400">本月</span>
           </div>
-          <div className="text-2xl font-bold text-white">{analyticsData?.totalAlerts || 0}</div>
-          <div className="text-sm text-gray-400">总告警数</div>
+          <div className="text-3xl font-bold text-white">{analyticsData?.totalAlerts || 0}</div>
+          <div className="text-base text-gray-400 mt-2">总告警数</div>
         </div>
 
-        <div className="industrial-card p-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="p-2 bg-green-900 rounded-lg">
-              <CheckCircle className="w-5 h-5 text-green-500" />
+        <div className="industrial-card p-8">
+          <div className="flex items-center justify-between mb-3">
+            <div className="p-3 bg-green-900 rounded-lg">
+              <CheckCircle className="w-6 h-6 text-green-500" />
             </div>
-            <span className="text-xs text-green-400">{resolutionRate}%</span>
+            <span className="text-sm text-green-400">{resolutionRate}%</span>
           </div>
-          <div className="text-2xl font-bold text-white">{analyticsData?.resolvedAlerts || 0}</div>
-          <div className="text-sm text-gray-400">已解决告警</div>
+          <div className="text-3xl font-bold text-white">{analyticsData?.resolvedAlerts || 0}</div>
+          <div className="text-base text-gray-400 mt-2">已解决告警</div>
         </div>
 
-        <div className="industrial-card p-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="p-2 bg-orange-900 rounded-lg">
-              <TrendingUp className="w-5 h-5 text-orange-500" />
+        <div className="industrial-card p-8">
+          <div className="flex items-center justify-between mb-3">
+            <div className="p-3 bg-orange-900 rounded-lg">
+              <TrendingUp className="w-6 h-6 text-orange-500" />
             </div>
-            <span className="text-xs text-gray-400">活跃</span>
+            <span className="text-sm text-gray-400">活跃</span>
           </div>
-          <div className="text-2xl font-bold text-white">{analyticsData?.pendingAlerts || 0}</div>
-          <div className="text-sm text-gray-400">待处理告警</div>
+          <div className="text-3xl font-bold text-white">{analyticsData?.pendingAlerts || 0}</div>
+          <div className="text-base text-gray-400 mt-2">待处理告警</div>
         </div>
 
-        <div className="industrial-card p-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="p-2 bg-blue-900 rounded-lg">
-              <TrendingUp className="w-5 h-5 text-blue-500" />
+        <div className="industrial-card p-8">
+          <div className="flex items-center justify-between mb-3">
+            <div className="p-3 bg-blue-900 rounded-lg">
+              <TrendingUp className="w-6 h-6 text-blue-500" />
             </div>
-            <span className="text-xs text-green-400">{deviceOnlineRate}%</span>
+            <span className="text-sm text-green-400">{deviceOnlineRate}%</span>
           </div>
-          <div className="text-2xl font-bold text-white">{analyticsData?.devicesOnline || 0}</div>
-          <div className="text-sm text-gray-400">在线设备</div>
+          <div className="text-3xl font-bold text-white">{analyticsData?.devicesOnline || 0}</div>
+          <div className="text-base text-gray-400 mt-2">在线设备</div>
         </div>
       </div>
 
       {/* 图表区域 */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* 周告警趋势 */}
-        <div className="industrial-card p-4">
-          <h3 className="text-lg font-semibold text-orange-500 mb-4">周告警趋势</h3>
+        <div className="industrial-card p-8">
+          <h3 className="text-xl font-semibold text-orange-500 mb-6">周告警趋势</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={analyticsData?.weeklyTrend || []}>
               <CartesianGrid strokeDasharray="3 3" stroke="#404040" />
@@ -123,8 +123,8 @@ const AnalyticsPage: React.FC<AnalyticsPageProps> = ({ analyticsData }) => {
         </div>
 
         {/* 告警类型分布 */}
-        <div className="industrial-card p-4">
-          <h3 className="text-lg font-semibold text-orange-500 mb-4">告警类型分布</h3>
+        <div className="industrial-card p-8">
+          <h3 className="text-xl font-semibold text-orange-500 mb-6">告警类型分布</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
@@ -163,7 +163,7 @@ const AnalyticsPage: React.FC<AnalyticsPageProps> = ({ analyticsData }) => {
       </div>
 
       {/* 传感器指标 */}
-      <div className="industrial-card p-4">
+      <div className="industrial-card p-6">
         <h3 className="text-lg font-semibold text-orange-500 mb-4">环境传感器指标</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
           {analyticsData?.sensorMetrics?.map((metric, index) => {
@@ -222,7 +222,7 @@ const AnalyticsPage: React.FC<AnalyticsPageProps> = ({ analyticsData }) => {
       {/* 详细统计表格 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* 设备状态统计 */}
-        <div className="industrial-card p-4">
+        <div className="industrial-card p-6">
           <h3 className="text-lg font-semibold text-orange-500 mb-4">设备状态统计</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
@@ -253,7 +253,7 @@ const AnalyticsPage: React.FC<AnalyticsPageProps> = ({ analyticsData }) => {
         </div>
 
         {/* 告警处理效率 */}
-        <div className="industrial-card p-4">
+        <div className="industrial-card p-6">
           <h3 className="text-lg font-semibold text-orange-500 mb-4">告警处理效率</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between p-3 bg-gray-800 rounded-lg">

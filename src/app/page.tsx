@@ -29,14 +29,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      <div className="container-industrial py-6">
+      <div className="container-industrial py-6 min-h-screen flex flex-col">
         <Navigation
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
 
         {/* 页面内容区域 */}
-        <main className="w-full">
+        <main className="w-full flex-grow mt-8 mb-8">
           {currentPage === 'monitor' && (
             <MonitorPage
               devices={devices}

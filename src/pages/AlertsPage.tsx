@@ -109,22 +109,22 @@ const AlertsPage: React.FC<AlertsPageProps> = ({
   };
 
   return (
-    <div className="space-y-6 page-transition">
+    <div className="space-y-12 page-transition">
       {/* 筛选区域 */}
-      <div className="industrial-card p-4">
-        <div className="flex items-center mb-4">
-          <Filter className="w-5 h-5 text-orange-500 mr-2" />
-          <h2 className="text-lg font-semibold text-orange-500">告警筛选</h2>
+      <div className="industrial-card p-8">
+        <div className="flex items-center mb-6">
+          <Filter className="w-6 h-6 text-orange-500 mr-3" />
+          <h2 className="text-xl font-semibold text-orange-500">告警筛选</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* 类型筛选 */}
           <div>
-            <label className="block text-sm text-gray-400 mb-2">告警类型</label>
+            <label className="block text-base text-gray-400 mb-3">告警类型</label>
             <select
               value={filters.type}
               onChange={(e) => setFilters(prev => ({ ...prev, type: e.target.value as any }))}
-              className="w-full p-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-orange-500 focus:outline-none"
+              className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-orange-500 focus:outline-none text-base"
             >
               <option value="all">全部类型</option>
               <option value="helmet">未戴安全帽</option>
@@ -135,11 +135,11 @@ const AlertsPage: React.FC<AlertsPageProps> = ({
 
           {/* 状态筛选 */}
           <div>
-            <label className="block text-sm text-gray-400 mb-2">处理状态</label>
+            <label className="block text-base text-gray-400 mb-3">处理状态</label>
             <select
               value={filters.status}
               onChange={(e) => setFilters(prev => ({ ...prev, status: e.target.value as any }))}
-              className="w-full p-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-orange-500 focus:outline-none"
+              className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-orange-500 focus:outline-none text-base"
             >
               <option value="all">全部状态</option>
               <option value="pending">未处理</option>
@@ -150,11 +150,11 @@ const AlertsPage: React.FC<AlertsPageProps> = ({
 
           {/* 优先级筛选 */}
           <div>
-            <label className="block text-sm text-gray-400 mb-2">优先级</label>
+            <label className="block text-base text-gray-400 mb-3">优先级</label>
             <select
               value={filters.priority}
               onChange={(e) => setFilters(prev => ({ ...prev, priority: e.target.value as any }))}
-              className="w-full p-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-orange-500 focus:outline-none"
+              className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-orange-500 focus:outline-none text-base"
             >
               <option value="all">全部优先级</option>
               <option value="high">高</option>
@@ -165,11 +165,11 @@ const AlertsPage: React.FC<AlertsPageProps> = ({
 
           {/* 时间范围筛选 */}
           <div>
-            <label className="block text-sm text-gray-400 mb-2">时间范围</label>
+            <label className="block text-base text-gray-400 mb-3">时间范围</label>
             <select
               value={filters.timeRange}
               onChange={(e) => setFilters(prev => ({ ...prev, timeRange: e.target.value as any }))}
-              className="w-full p-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-orange-500 focus:outline-none"
+              className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-orange-500 focus:outline-none text-base"
             >
               <option value="all">全部时间</option>
               <option value="24h">最近24小时</option>
@@ -179,9 +179,9 @@ const AlertsPage: React.FC<AlertsPageProps> = ({
           </div>
         </div>
 
-        <div className="mt-4 flex items-center justify-between">
-          <div className="text-sm text-gray-400">
-            共找到 <span className="text-orange-500 font-semibold">{filteredAlerts.length}</span> 条告警记录
+        <div className="mt-6 flex items-center justify-between">
+          <div className="text-base text-gray-400">
+            共找到 <span className="text-orange-500 font-semibold text-lg">{filteredAlerts.length}</span> 条告警记录
           </div>
           <button
             onClick={() => setFilters({
@@ -190,7 +190,7 @@ const AlertsPage: React.FC<AlertsPageProps> = ({
               priority: 'all',
               timeRange: 'all'
             })}
-            className="text-sm text-orange-500 hover:text-orange-400"
+            className="text-base text-orange-500 hover:text-orange-400"
           >
             重置筛选
           </button>
@@ -198,49 +198,49 @@ const AlertsPage: React.FC<AlertsPageProps> = ({
       </div>
 
       {/* 告警统计 */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="industrial-card p-4 text-center">
-          <div className="text-2xl font-bold text-yellow-500">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="industrial-card p-8 text-center">
+          <div className="text-3xl font-bold text-yellow-500">
             {filteredAlerts.filter(a => a.status === 'pending').length}
           </div>
-          <div className="text-sm text-gray-400">未处理</div>
+          <div className="text-base text-gray-400 mt-2">未处理</div>
         </div>
-        <div className="industrial-card p-4 text-center">
-          <div className="text-2xl font-bold text-orange-500">
+        <div className="industrial-card p-8 text-center">
+          <div className="text-3xl font-bold text-orange-500">
             {filteredAlerts.filter(a => a.status === 'processing').length}
           </div>
-          <div className="text-sm text-gray-400">处理中</div>
+          <div className="text-base text-gray-400 mt-2">处理中</div>
         </div>
-        <div className="industrial-card p-4 text-center">
-          <div className="text-2xl font-bold text-green-500">
+        <div className="industrial-card p-8 text-center">
+          <div className="text-3xl font-bold text-green-500">
             {filteredAlerts.filter(a => a.status === 'resolved').length}
           </div>
-          <div className="text-sm text-gray-400">已解决</div>
+          <div className="text-base text-gray-400 mt-2">已解决</div>
         </div>
-        <div className="industrial-card p-4 text-center">
-          <div className="text-2xl font-bold text-red-500">
+        <div className="industrial-card p-8 text-center">
+          <div className="text-3xl font-bold text-red-500">
             {filteredAlerts.filter(a => a.priority === 'high' && a.status !== 'resolved').length}
           </div>
-          <div className="text-sm text-gray-400">高优先级待处理</div>
+          <div className="text-base text-gray-400 mt-2">高优先级待处理</div>
         </div>
       </div>
 
       {/* 告警列表 */}
-      <div className="industrial-card p-4">
-        <h2 className="text-lg font-semibold text-orange-500 mb-4">告警列表</h2>
+      <div className="industrial-card p-8">
+        <h2 className="text-xl font-semibold text-orange-500 mb-8">告警列表</h2>
 
         {filteredAlerts.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">
-            <AlertTriangle className="w-12 h-12 mx-auto mb-4 opacity-50" />
-            <p>暂无符合条件的告警记录</p>
+          <div className="text-center py-12 text-gray-500">
+            <AlertTriangle className="w-16 h-16 mx-auto mb-6 opacity-50" />
+            <p className="text-lg">暂无符合条件的告警记录</p>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-6">
             {filteredAlerts.map(alert => (
               <div
                 key={alert.id}
                 className={`
-                  p-4 rounded-lg border transition-all duration-200
+                  p-6 rounded-lg border transition-all duration-200
                   ${alert.status === 'pending' && alert.priority === 'high'
                     ? 'bg-red-900 border-red-700 alert-blink'
                     : 'bg-gray-800 border-gray-700 hover:bg-gray-750'}
@@ -248,55 +248,55 @@ const AlertsPage: React.FC<AlertsPageProps> = ({
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className={`px-2 py-1 rounded text-xs font-medium text-white ${getAlertTypeColor(alert.type)}`}>
+                    <div className="flex items-center gap-4 mb-3">
+                      <span className={`px-3 py-2 rounded text-sm font-medium text-white ${getAlertTypeColor(alert.type)}`}>
                         {getAlertTypeLabel(alert.type)}
                       </span>
-                      <span className={`px-2 py-1 rounded text-xs font-medium border ${getPriorityColor(alert.priority)}`}>
+                      <span className={`px-3 py-2 rounded text-sm font-medium border ${getPriorityColor(alert.priority)}`}>
                         {alert.priority === 'high' ? '高' : alert.priority === 'medium' ? '中' : '低'}优先级
                       </span>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-2">
                         {getStatusIcon(alert.status)}
-                        <span className="text-xs text-gray-400">{getStatusLabel(alert.status)}</span>
+                        <span className="text-sm text-gray-400">{getStatusLabel(alert.status)}</span>
                       </div>
                     </div>
 
-                    <h3 className="text-white font-semibold mb-1">{alert.title}</h3>
-                    <p className="text-gray-400 text-sm mb-2">{alert.description}</p>
+                    <h3 className="text-white text-lg font-semibold mb-2">{alert.title}</h3>
+                    <p className="text-gray-400 text-base mb-3">{alert.description}</p>
 
-                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                    <div className="flex items-center gap-6 text-sm text-gray-500">
                       <span>位置: {alert.location}</span>
                       <span>时间: {alert.timestamp.toLocaleString()}</span>
                       {alert.deviceId && <span>设备: {alert.deviceId}</span>}
                     </div>
                   </div>
 
-                  <div className="flex gap-2 ml-4">
+                  <div className="flex gap-3 ml-6">
                     <button
                       onClick={() => onAlertSelect(alert)}
-                      className="p-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+                      className="p-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
                       title="查看详情"
                     >
-                      <Eye className="w-4 h-4" />
+                      <Eye className="w-5 h-5" />
                     </button>
 
                     {alert.status === 'pending' && (
                       <button
                         onClick={() => onAlertStatusChange(alert.id, 'processing')}
-                        className="p-2 bg-orange-600 hover:bg-orange-700 rounded-lg transition-colors"
+                        className="p-3 bg-orange-600 hover:bg-orange-700 rounded-lg transition-colors"
                         title="标记处理中"
                       >
-                        <Clock className="w-4 h-4" />
+                        <Clock className="w-5 h-5" />
                       </button>
                     )}
 
                     {alert.status === 'processing' && (
                       <button
                         onClick={() => onAlertStatusChange(alert.id, 'resolved')}
-                        className="p-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
+                        className="p-3 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
                         title="标记已解决"
                       >
-                        <CheckCircle className="w-4 h-4" />
+                        <CheckCircle className="w-5 h-5" />
                       </button>
                     )}
                   </div>
